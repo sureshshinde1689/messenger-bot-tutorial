@@ -48,7 +48,7 @@ app.post('/webhook/', function (req, res) {
 			else if (text=== 'Where is the project location'){
 				sendTextMessage(sender, "NIBM Annexe, Undri-Pisoli Road", token)
 			}
-
+			else
 			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 		}
 		if (event.postback) {
