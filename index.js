@@ -81,9 +81,9 @@ function sendGenericMessage(sender) {
 			"payload": {
 				"template_type": "generic",
 				"elements": [{
-					"title": "First card",
-					"subtitle": "Element #1 of an hscroll",
-					"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+					"title": "Club House",
+					"subtitle": "Aminities( next)",
+					"image_url": "http://sunshinehills.in/img/gallery/1.jpg",
 					"buttons": [{
 						"type": "web_url",
 						"url": "https://www.messenger.com",
@@ -94,13 +94,13 @@ function sendGenericMessage(sender) {
 						"payload": "Payload for first element in a generic bubble",
 					}],
 				}, {
-					"title": "Second card",
+					"title": "Living Room",
 					"subtitle": "Element #2 of an hscroll",
-					"image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+					"image_url": "http://sunshinehills.in/img/gallery/4-tn.jpg",
 					"buttons": [{
 						"type": "postback",
 						"title": "Postback",
-						"payload": "Payload for second element in a generic bubble",
+						"payload": "this ic contect to display",
 					}],
 				}]
 			}
