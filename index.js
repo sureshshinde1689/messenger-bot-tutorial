@@ -34,7 +34,7 @@ app.post('/webhook/', function (req, res) {
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
-			if (text === 'pics' || text === 'images' || text === 'pics' || text === 'show me pics') {
+			if (text === 'Generic' || text === 'images' || text === 'pics' || text === 'show me pics') {
 				sendGenericMessage(sender)
 				continue
 			}
@@ -79,7 +79,7 @@ function sendGenericMessage(sender) {
 		"attachment": {
 			"type": "template",
 			"payload": {
-				"template_type": "pics",
+				"template_type": "Generic",
 				"elements": [{
 					"title": "Club House",
 					"subtitle": "Aminities( next)",
