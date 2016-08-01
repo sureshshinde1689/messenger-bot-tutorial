@@ -79,7 +79,7 @@ function sendGenericMessage(sender) {
 		"attachment": {
 			"type": "template",
 			"payload": {
-				"template_type": "Pics",
+				"template_type": "Generic",
 				"elements": [{
 					"title": "Club House",
 					"subtitle": "Aminities( next)",
