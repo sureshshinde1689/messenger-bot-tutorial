@@ -43,7 +43,7 @@ app.post('/webhook/', function (req, res) {
 				continue
 			}
 			else if (text=== 'hello'){
-				sendTextMessage(sender, "Hello, I am a chat bot. If you want to more info type Details", token)
+				sendTextMessage(sender, "Hello, I am a chat bot. If you want to more info type Generic", token)
 			}
 			else if (text=== 'Where is the project location'){
 				sendTextMessage(sender, "NIBM Annexe, Undri-Pisoli Road", token)
