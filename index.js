@@ -44,7 +44,8 @@ app.post('/webhook/', function (req, res) {
 			if(text=== 'project location'){
 				sendTextMessage(sender, "NIBM Annexe, Undri-Pisoli Road", token)
 			}
-			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+			//sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+			sendTextMessage(sender, "For more details, please visit: http://sunshinehills.in/", token)
 		}
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
