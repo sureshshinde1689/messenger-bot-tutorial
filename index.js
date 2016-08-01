@@ -86,7 +86,7 @@ function sendGenericMessage(sender) {
 					"image_url": "http://sunshinehills.in/img/gallery/1.jpg",
 					"buttons": [{
 						"type": "web_url",
-						"url": "https://www.messenger.com",
+						"url": "http://sunshinehills.in/",
 						"title": "web url"
 					}, {
 						"type": "postback",
