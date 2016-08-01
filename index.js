@@ -171,7 +171,7 @@ function sendDetailsMessage(sender) {
 		"attachment": {
 			"type": "template",
 			"payload": {
-				"template_type": "Details",
+				"template_type": "details",
 				"elements": [{
 					"title": "Project Location",
 					"subtitle": "NIBM Annexe, Undri-Pisoli Road",
