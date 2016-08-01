@@ -167,7 +167,7 @@ function sendGenericMessage(sender) {
 
 
 function sendDetailsMessage(sender) {
-	let messageData = {
+	let messageDetailsData = {
 		"attachment": {
 			"type": "template",
 			"payload": {
@@ -234,7 +234,7 @@ function sendDetailsMessage(sender) {
 		method: 'POST',
 		json: {
 			recipient: {id:sender},
-			message: messageData,
+			message: messageDetailsData,
 		}
 	}, function(error, response, body) {
 		if (error) {
