@@ -38,18 +38,23 @@ app.post('/webhook/', function (req, res) {
 				sendGenericMessage(sender)
 				continue
 			}
-			if(text=== 'hello'){
-				sendTextMessage(sender, "Hello, I am a chat bot. How may I help you today", token)
+			if (text === 'Details') {
+				sendDetailsMessage(sender)
+				continue
 			}
-			if(text=== 'project location'){
+			if(text=== 'hello'){
+				sendTextMessage(sender, "Hello, I am a chat bot. If you want to more info type Details", token)
+			}
+			if(text=== 'Where is the project location'){
 				sendTextMessage(sender, "NIBM Annexe, Undri-Pisoli Road", token)
 			}
-			//sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
-			sendTextMessage(sender, "For more details, please visit: http://sunshinehills.in/", token)
+
+			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 		}
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
-			sendTextMessage(sender, "Postback received: "+text.substring(0, 200), token)
+			sendTextMessage(sender, "For more details, please visit: http://sunshinehills.in/", token)
+			//sendGenericMessage(sender)
 			continue
 		}
 	}
@@ -100,7 +105,37 @@ function sendGenericMessage(sender) {
 						"title": "Postback",
 						"payload": "Payload for first element in a generic bubble",
 					}],
-				}, {
+				},
+				{
+					"title": "Children Play Park",
+					"subtitle": "Aminities( next)",
+					"image_url": "http://sunshinehills.in/img/gallery/10.jpg",
+					"buttons": [{
+						"type": "web_url",
+						"url": "http://sunshinehills.in/",
+						"title": "web url"
+					}, {
+						"type": "postback",
+						"title": "Postback",
+						"payload": "Payload for first element in a generic bubble",
+					}],
+				},
+				{
+					"title": "Club House",
+					"subtitle": "Aminities( next)",
+					"image_url": "http://sunshinehills.in/img/gallery/1.jpg",
+					"buttons": [{
+						"type": "web_url",
+						"url": "http://sunshinehills.in/",
+						"title": "web url"
+					}, {
+						"type": "postback",
+						"title": "Postback",
+						"payload": "Payload for first element in a generic bubble",
+					}],
+				},
+
+				 {
 					"title": "Living Room",
 					"subtitle": "Element #2 of an hscroll",
 					"image_url": "http://sunshinehills.in/img/gallery/4-tn.jpg",
@@ -108,6 +143,86 @@ function sendGenericMessage(sender) {
 						"type": "postback",
 						"title": "Postback",
 						"payload": "this ic contect to display",
+					}],
+				}]
+			}
+		}
+	}
+	request({
+		url: 'https://graph.facebook.com/v2.6/me/messages',
+		qs: {access_token:token},
+		method: 'POST',
+		json: {
+			recipient: {id:sender},
+			message: messageData,
+		}
+	}, function(error, response, body) {
+		if (error) {
+			console.log('Error sending messages: ', error)
+		} else if (response.body.error) {
+			console.log('Error: ', response.body.error)
+		}
+	})
+}
+
+
+function sendDetailsMessage(sender) {
+	let messageData = {
+		"attachment": {
+			"type": "template",
+			"payload": {
+				"template_type": "Details",
+				"elements": [{
+					"title": "Project Location",
+					"subtitle": "NIBM Annexe, Undri-Pisoli Road",
+					"image_url": "http://sunshinehills.in/img/locationmap.jpg",
+					"buttons": [{
+						"type": "web_url",
+						"url": "http://sunshinehills.in/",
+						"title": "web url"
+					}, {
+						"type": "postback",
+						"title": "Postback",
+						"payload": "Project location is NIBM Annexe, Undri-Pisoli Road",
+					}],
+				},
+				{
+					"title": "What are the areas of 1BHK and 2BHK Flats?",
+					"subtitle": "1 BHK 3D View",
+					"image_url": "http://sunshinehills.in/img/1bhk-3dview.jpg",
+					"buttons": [{
+						"type": "web_url",
+						"url": "http://sunshinehills.in/",
+						"title": "web url"
+					}, {
+						"type": "postback",
+						"title": "Postback",
+						"payload": "Payload for first element in a generic bubble",
+					}],
+				},
+				{
+					"title": "2 BHK 3D View",
+					"subtitle": "Aminities( next)",
+					"image_url": "http://sunshinehills.in/img/2bhk-3dview.jpg",
+					"buttons": [{
+						"type": "web_url",
+						"url": "http://sunshinehills.in/",
+						"title": "web url"
+					}, {
+						"type": "postback",
+						"title": "Postback",
+						"payload": "Payload for first element in a generic bubble",
+					}],
+				},
+
+				 {
+					"title": "Even Floor Plan",
+					"subtitle": "B wing even floor plan",
+					"image_url": "http://sunshinehills.in/img/wing-b-evenfloorplan.jpg",
+					"buttons": [{
+						"type": "postback",
+						"title": "Postback",
+						"payload": "this is contect to display",
 					}],
 				}]
 			}
