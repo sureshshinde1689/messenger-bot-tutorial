@@ -34,7 +34,7 @@ app.post('/webhook/', function (req, res) {
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
-			if (text === 'Project images' || text === 'images' || text === 'pics' || text === 'show me pics') {
+			if (text === 'pics' || text === 'images' || text === 'pics' || text === 'show me pics') {
 				sendGenericMessage(sender)
 				continue
 			}
