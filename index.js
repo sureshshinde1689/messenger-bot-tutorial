@@ -48,28 +48,28 @@ app.post('/webhook/', function (req, res) {
 			else if (text=== 'hi'){
 				sendTextMessage(sender, "Hello, I am a chat bot. If you want to more info type Generic", token)
 			}
-			else if (text=== 'Where is the project location?' || text=== 'project location' || text=== 'location' || text=== 'address'){
+			else if (text=== 'Where is the project location'){
 				sendTextMessage(sender, "NIBM Annexe, Undri-Pisoli Road", token)
 			}
-			else if (text=== 'What all amenities do you have?' || text=== 'amenities' || text=== 'amenities do you have?' || text=== 'what all amenities do you have'){
+			else if (text=== 'What all amenities do you have?'){
 				sendTextMessage(sender, "Clubhouse, swimming pool, amphitheater, gymnasium, garden, power backups for elevators etc.", token)
 			}
-			else if (text=== 'What are the areas of 1BHK and 2BHK Flats?' || text=== 'areas'){
+			else if (text=== 'What are the areas of 1BHK and 2BHK Flats?'){
 				sendTextMessage(sender, "1 BHK is 560 sq ft and 2 BHK is 950 Sq Ft.", token)
 			}
-			else if (text=== 'What are the rates?' text==='rates'){
+			else if (text=== 'What are the rates?'){
 				sendTextMessage(sender, "1 BHK will be 28 Lakh (all inclusive) and 2BHK 46 Lakh (all inclusive)", token)
 			}
-			else if (text=== 'When will we get the possession?' || text=== 'passession'){
+			else if (text=== 'When will we get the possession?'){
 				sendTextMessage(sender, "Flats are ready possession flats.", token)
 			}
-			else if (text=== 'When can I see the site?' || text=== 'i want to see the site' || text=== 'i can see site?' || text=== 'site'){
+			else if (text=== 'When can I see the site?'){
 				sendTextMessage(sender, "Sir, please let us know your convenient timings and we will book your site-visit accordingly.", token)
 			}
-			else if (text=== 'Do you have bank finance facility available?' || text=== 'any finance facility available' || text=== 'finance'){
+			else if (text=== 'Do you have bank finance facility available?'){
 				sendTextMessage(sender, "Yes, you can get the home-loan assistance from HDFC, AXIS and SBI.", token)
 			}
-			else if (text=== 'Will you provide the services to do the site visit?' || text=== 'services'){
+			else if (text=== 'Will you provide the services to do the site visit?'){
 				sendTextMessage(sender, "Our executives will assist you to locate the project. Although we do not provide pick and drop assistance.", token)
 			}
 			else
