@@ -57,7 +57,7 @@ app.post('/webhook/', function (req, res) {
 			else if (text=== 'What are the areas of 1BHK and 2BHK Flats?' || text=== 'areas?' || text=== 'areas' || text=== 'area'){
 				sendTextMessage(sender, "1 BHK is 560 sq ft and 2 BHK is 950 Sq Ft.", token)
 			}
-			else if (text=== 'What are the rates?' || text=== 'rates?' || text=== 'rates'){
+			else if (text=== 'What are the rates?' || text=== 'rates?' || text=== 'rates' || text=== 'price' || text=== 'pricing'){
 				sendTextMessage(sender, "1 BHK will be 28 Lakh (all inclusive) and 2BHK 46 Lakh (all inclusive)", token)
 			}
 			else if (text=== 'When will we get the possession?' || text=== 'possession?' || text=== 'possession'){
