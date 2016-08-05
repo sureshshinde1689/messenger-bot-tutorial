@@ -58,7 +58,7 @@ app.post('/webhook/', function (req, res) {
 			var contactme = patt.test("call me?");
 			var area = patt.test("area");
 			if(!area)
-			var contactme = patt.test("areas");
+			var area = patt.test("areas");
 			if(!area)
 			var area = patt.test("areas?");
 			var possession = patt.test("possession");
