@@ -45,15 +45,37 @@ app.post('/webhook/', function (req, res) {
 			var location = patt.test("location");
 			if(!location)
 			var location = patt.test("address");
+			if(!location)
+			var location = patt.test("address?");
+			if(!location)
+			var location = patt.test("location?");
 			var contactme = patt.test("call me");
 			if(!contactme)
 			var contactme = patt.test("contact me");
+			if(!contactme)
+			var contactme = patt.test("contact me?");
+			if(!contactme)
+			var contactme = patt.test("call me?");
 			var area = patt.test("area");
+			if(!area)
+			var contactme = patt.test("areas");
+			if(!area)
+			var area = patt.test("areas?");
 			var possession = patt.test("possession");
+			if(!possession)
+			var possession = patt.test("possession?");
 			var finance = patt.test("finance");
 			if(!finance)
+			var finance = patt.test("finance?");
+			if(!finance)
 			var finance = patt.test("loan");
+			if(!finance)
+			var finance = patt.test("loan?");
 			var booking = patt.test("book");
+			if(!booking)
+			var booking = patt.test("booking");
+			if(!booking)
+			var booking = patt.test("booking?");
 			if (resg) {
 				sendGenericMessage(sender)
 				continue
