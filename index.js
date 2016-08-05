@@ -34,7 +34,9 @@ app.post('/webhook/', function (req, res) {
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
-			if (text === 'Generic') {
+			var patt = new RegExp(text);
+			var resg = patt.test("generic");
+			if (resg) {
 				sendGenericMessage(sender)
 				continue
 			}
