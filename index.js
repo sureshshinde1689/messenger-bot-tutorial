@@ -49,28 +49,18 @@ app.post('/webhook/', function (req, res) {
 			var location = locationp.test("location");
 			if(!location)
 			var location = locationp.test("address");
-			if(!location)
-			var location = locationp.test("address?");
-			if(!location)
-			var location = locationp.test("location?");
-			var callmep = new RegExp(text);
-			var contactme = callmep.test("call me");
+			
+			var callmep = new RegExp("call");
+			var contactme = callmep.test(text);
 			if(!contactme)
 			var contactme = callmep.test("contact me");
-			if(!contactme)
-			var contactme = callmep.test("contact me?");
-			if(!contactme)
-			var contactme = callmep.test("call me?");
-			var areap = new RegExp(text);
-			var area = areap.test("area");
-			if(!area)
-			var area = areap.test("areas");
-			if(!area)
-			var area = areap.test("areas?");
-			var possessionp = new RegExp(text);
-			var possession = possessionp.test("possession");
-			if(!possession)
-			var possession = possessionp.test("possession?");
+			
+			var areap = new RegExp("area");
+			var area = areap.test(text);
+			
+			var possessionp = new RegExp("possession");
+			var possession = possessionp.test(text);
+			
 			var financep = new RegExp(text);
 			var finance = financep.test("finance");
 			if(!finance)
