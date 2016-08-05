@@ -34,8 +34,10 @@ app.post('/webhook/', function (req, res) {
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
+			text = text.toLowerCase();
 			var patt = new RegExp(text);
 			var resg = patt.test("generic");
+			var amenities = patt.test("aminiti");
 			if (resg) {
 				sendGenericMessage(sender)
 				continue
@@ -58,6 +60,9 @@ app.post('/webhook/', function (req, res) {
 			}
 			else if (text=== 'What are the areas of 1BHK and 2BHK Flats?' || text=== 'areas?' || text=== 'areas' || text=== 'area'){
 				sendTextMessage(sender, "1 BHK is 560 sq ft and 2 BHK is 950 Sq Ft.", token)
+			}
+			else if (amenities){
+				sendTextMessage(sender, "test We are offering Gym, Yoga/Meditation Hall, Jogging Track, Party Lawn & much more. Would you like know about Booking Offer? then please type Booking", token)
 			}
 			else if (text=== 'What are the rates?' || text=== 'rates?' || text=== 'rates' || text=== 'price' || text=== 'price?' || text=== 'pricing' || text=== 'pricing?'){
 				sendTextMessage(sender, "1 BHK will be 28 Lakh (all inclusive) and 2BHK 46 Lakh (all inclusive). Would you like to check our Amenities, please type amenities.", token)
