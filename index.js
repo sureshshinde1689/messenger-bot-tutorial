@@ -67,6 +67,13 @@ app.post('/webhook/', function (req, res) {
 			var possessionp = new RegExp("possession");
 			var possession = possessionp.test(text);
 			
+			var offerp = new RegExp("offer");
+			var offer = offerp.test(text);
+			if(!offer)
+			{
+			var offerp = new RegExp("discount");
+			var offer = offerp.test(text);
+			}
 			var financep = new RegExp("finance");
 			var finance = financep.test(text);
 			if(!finance)
@@ -92,7 +99,7 @@ app.post('/webhook/', function (req, res) {
 				sendTextMessage(sender, "Hello, I am a chat bot. If you want to more info type generic", token)
 			}
 			else if (location){
-				sendTextMessage(sender, "NIBM Annexe, Undri-Pisoli Road", token)
+				sendTextMessage(sender, " Our project is Located near NIBM Annexe, Pune.", token)
 			}
 			else if (amenities){
 				sendTextMessage(sender, "We are offering Gym, Yoga/Meditation Hall, Jogging Track, Party Lawn & much more. Would you like know about Booking Offer? then please type Booking", token)
@@ -104,10 +111,13 @@ app.post('/webhook/', function (req, res) {
 				sendTextMessage(sender, "Thank you for contacting us. Please share your contact details at http://www.sunshinehills.in/, our sales representative will get back to you soon.", token)
 			}
 			else if (price){
-				sendTextMessage(sender, "1 BHK will be 28 Lakh (all inclusive) and 2BHK 46 Lakh (all inclusive). Would you like to check our Amenities, please type amenities.", token)
+				sendTextMessage(sender, "1 BHK will be 28 Lakh (all inclusive) and 2BHK 46 Lakh (all inclusive). Would you like to check our offers, please type offer.", token)
 			}
 			else if (possession){
 				sendTextMessage(sender, "Flats are ready possession flats.", token)
+			}
+			else if (offer){
+				sendTextMessage(sender, "The price of 1 bhk is 27.25 lacs with discount of 50000 and the price of 2 bhk is 42.65 lacs with discount of 1 lacs", token)
 			}
 			else if (booking){
 				sendTextMessage(sender, "You can book by paying 25000+Taxes. Please share your contact details here: http://www.sunshinehills.in", token)
@@ -116,7 +126,7 @@ app.post('/webhook/', function (req, res) {
 				sendTextMessage(sender, "Sir, please let us know your convenient timings and we will book your site-visit accordingly.", token)
 			}
 			else if (finance){
-				sendTextMessage(sender, "Yes, you can get the home-loan assistance from HDFC, AXIS and SBI.", token)
+				sendTextMessage(sender, "We have the loan facility from HDFC, AXIS & SBI Banks. For more details on Loan & EMI, please share your contact information at http://www.sunshinehills.in", token)
 			}
 			else if (text=== 'Will you provide the services to do the site visit?'){
 				sendTextMessage(sender, "Our executives will assist you to locate the project. Although we do not provide pick and drop assistance.", token)
