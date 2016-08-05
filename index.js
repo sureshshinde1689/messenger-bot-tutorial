@@ -83,7 +83,22 @@ app.post('/webhook/', function (req, res) {
 			}
 			var bookp = new RegExp("book");
 			var booking = bookp.test(text);
-		
+			var bhkp = new RegExp("bhk");
+			var bhk = bookp.test(text);
+			var imagesp = new RegExp("pics");
+			var images = bookp.test(text);
+			if(!images)
+			{
+			var imagesp = new RegExp("image");
+			var images = bookp.test(text);
+			}
+			if(!images)
+			{
+			var imagesp = new RegExp("picture");
+			var images = bookp.test(text);
+			}
+			var galleryp = new RegExp("image");
+			var gallery = galleryp.test(text);
 			if (resg) {
 				sendGenericMessage(sender)
 				continue
@@ -93,10 +108,14 @@ app.post('/webhook/', function (req, res) {
 				continue
 			}
 			else if (text=== 'hello'){
-				sendTextMessage(sender, "Hello, I am a chat bot. If you want to more info type generic", token)
+				sendTextMessage(sender, "Hello, I am a chat bot. Check out below", token)
+				sendGenericMessage(sender)
+				continue
 			}
 			else if (text=== 'hi'){
-				sendTextMessage(sender, "Hello, I am a chat bot. If you want to more info type generic", token)
+				sendTextMessage(sender, "Hello, I am a chat bot. Check out below", token)
+				sendGenericMessage(sender)
+				continue
 			}
 			else if (location){
 				sendTextMessage(sender, " Our project is Located near NIBM Annexe, Pune.", token)
@@ -113,8 +132,14 @@ app.post('/webhook/', function (req, res) {
 			else if (price){
 				sendTextMessage(sender, "1 BHK will be 28 Lakh (all inclusive) and 2BHK 46 Lakh (all inclusive). Would you like to check our offers, please type offer.", token)
 			}
+			else if (bhk){
+				sendTextMessage(sender, "1 BHK will be 28 Lakh (all inclusive) and 2BHK 46 Lakh (all inclusive). To check areas, type area.", token)
+			}
 			else if (possession){
 				sendTextMessage(sender, "Flats are ready possession flats.", token)
+			}
+			else if (gallery){
+				sendTextMessage(sender, "Check out our gallery images here http://sunshinehills.in/#gallery", token)
 			}
 			else if (offer){
 				sendTextMessage(sender, "The price of 1 bhk is 27.25 lacs with discount of 50000 and the price of 2 bhk is 42.65 lacs with discount of 1 lacs", token)
@@ -123,7 +148,7 @@ app.post('/webhook/', function (req, res) {
 				sendTextMessage(sender, "You can book by paying 25000+Taxes. Please share your contact details here: http://www.sunshinehills.in", token)
 			}
 			else if (sitevisit){
-				sendTextMessage(sender, "Sir, please let us know your convenient timings and we will book your site-visit accordingly.", token)
+				sendTextMessage(sender, "Please share your contact details at http://www.sunshinehills.in/, our sales representative will get back to you soon.", token)
 			}
 			else if (finance){
 				sendTextMessage(sender, "We have the loan facility from HDFC, AXIS & SBI Banks. For more details on Loan & EMI, please share your contact information at http://www.sunshinehills.in", token)
@@ -182,6 +207,20 @@ function sendGenericMessage(sender) {
 					"title": "Club House",
 					"subtitle": "Aminities( next)",
 					"image_url": "http://sunshinehills.in/img/gallery/1.jpg",
+					"buttons": [{
+						"type": "web_url",
+						"url": "http://sunshinehills.in/",
+						"title": "web url"
+					}, {
+						"type": "postback",
+						"title": "Postback",
+						"payload": "Payload for first element in a generic bubble",
+					}],
+				},
+				{
+					"title": "Actual Site Photograph",
+					"subtitle": "1 BHK & 2 BHK Flats",
+					"image_url": "http://sunshinehills.in/img/slider/banner2.jpg",
 					"buttons": [{
 						"type": "web_url",
 						"url": "http://sunshinehills.in/",
