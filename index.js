@@ -51,7 +51,7 @@ app.post('/webhook/', function (req, res) {
 			else if (text=== 'Where is the project location?' || text=== 'project location?' || text=== 'project location' || text=== 'location'){
 				sendTextMessage(sender, "NIBM Annexe, Undri-Pisoli Road", token)
 			}
-			else if (text=== 'What all amenities do you have?' || text=== 'aminities?' || text=== 'aminities'){
+			else if (text=== 'What all amenities do you have?' || text=== 'amenities?' || text=== 'amenities'){
 				sendTextMessage(sender, "Clubhouse, swimming pool, amphitheater, gymnasium, garden, power backups for elevators etc.", token)
 			}
 			else if (text=== 'What are the areas of 1BHK and 2BHK Flats?' || text=== 'areas?' || text=== 'areas' || text=== 'area'){
