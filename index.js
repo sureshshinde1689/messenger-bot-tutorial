@@ -84,20 +84,20 @@ app.post('/webhook/', function (req, res) {
 			var bookp = new RegExp("book");
 			var booking = bookp.test(text);
 			var bhkp = new RegExp("bhk");
-			var bhk = bookp.test(text);
+			var bhk = bhkp.test(text);
 			var imagesp = new RegExp("pics");
-			var images = bookp.test(text);
+			var images = imagesp.test(text);
 			if(!images)
 			{
 			var imagesp = new RegExp("image");
-			var images = bookp.test(text);
+			var images = imagesp.test(text);
 			}
 			if(!images)
 			{
 			var imagesp = new RegExp("picture");
-			var images = bookp.test(text);
+			var images = imagesp.test(text);
 			}
-			var galleryp = new RegExp("image");
+			var galleryp = new RegExp("gallery");
 			var gallery = galleryp.test(text);
 			if (resg) {
 				sendGenericMessage(sender)
