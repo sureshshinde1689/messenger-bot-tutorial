@@ -35,38 +35,47 @@ app.post('/webhook/', function (req, res) {
 		if (event.message && event.message.text) {
 			let text = event.message.text
 			text = text.toLowerCase();
-			var patt = new RegExp(text);
-			var resg = patt.test("generic");
-			var amenitiesp = new RegExp(text);
-			var amenities = amenitiesp.test("amenit");
-			var pricep = new RegExp(text);
-			var price = pricep.test("rate");
-			if(!price)
-			var price = pricep.test("pric");
-			var sitevisitp = new RegExp(text);
-			var sitevisit = sitevisitp.test("site visit");
-			var locationp = new RegExp(text);
-			var location = locationp.test("location");
+			var patt = new RegExp("generic");
+			var resg = patt.test(text);
+			var amenitiesp = new RegExp("amenit");
+			var amenities = amenitiesp.test(text);
+			var pricep = new RegExp("rate");
+			var price = pricep.test(text);
+			if(!price){
+			var pricep = new RegExp("price");
+			var price = pricep.test(text);
+			}
+			var sitevisitp = new RegExp("site visit");
+			var sitevisit = sitevisitp.test(text);
+			var locationp = new RegExp("location");
+			var location = locationp.test(text);
 			if(!location)
-			var location = locationp.test("address");
-			
+			{
+			var locationp = new RegExp("address");
+			var location = locationp.test(text);
+			}
 			var callmep = new RegExp("call");
 			var contactme = callmep.test(text);
 			if(!contactme)
-			var contactme = callmep.test("contact me");
-			
+			{
+			var callmep = new RegExp("contact me");
+			var contactme = callmep.test(text);
+			}
 			var areap = new RegExp("area");
 			var area = areap.test(text);
 			
 			var possessionp = new RegExp("possession");
 			var possession = possessionp.test(text);
 			
-			var financep = new RegExp(text);
-			var finance = financep.test("finance");
+			var financep = new RegExp("finance");
+			var finance = financep.test(text);
 			if(!finance)
-			var finance = financep.test("loan");
-			var bookp = new RegExp(text);
-			var booking = bookp.test("book");
+			{
+			var financep = new RegExp("loan");
+			var finance = financep.test(text);
+			}
+			var bookp = new RegExp("book");
+			var booking = bookp.test(text);
 		
 			if (resg) {
 				sendGenericMessage(sender)
