@@ -37,7 +37,23 @@ app.post('/webhook/', function (req, res) {
 			text = text.toLowerCase();
 			var patt = new RegExp(text);
 			var resg = patt.test("generic");
-			var amenities = patt.test("aminiti");
+			var amenities = patt.test("amenit");
+			var price = patt.test("rate");
+			if(!price)
+			var price = patt.test("pric");
+			var sitevisit = patt.test("site visit");
+			var location = patt.test("location");
+			if(!location)
+			var location = patt.test("address");
+			var contactme = patt.test("call me");
+			if(!contactme)
+			var contactme = patt.test("contact me");
+			var area = patt.test("area");
+			var possession = patt.test("possession");
+			var finance = patt.test("finance");
+			if(!finance)
+			var finance = patt.test("loan");
+			var booking = patt.test("book");
 			if (resg) {
 				sendGenericMessage(sender)
 				continue
@@ -47,36 +63,36 @@ app.post('/webhook/', function (req, res) {
 				continue
 			}
 			else if (text=== 'hello'){
-				sendTextMessage(sender, "Hello, I am a chat bot. If you want to more info type Generic", token)
+				sendTextMessage(sender, "Hello, I am a chat bot. If you want to more info type generic", token)
 			}
 			else if (text=== 'hi'){
-				sendTextMessage(sender, "Hello, I am a chat bot. If you want to more info type Generic", token)
+				sendTextMessage(sender, "Hello, I am a chat bot. If you want to more info type generic", token)
 			}
-			else if (text=== 'Where is the project location?' || text=== 'project location?' || text=== 'project location' || text=== 'location'){
+			else if (location){
 				sendTextMessage(sender, "NIBM Annexe, Undri-Pisoli Road", token)
 			}
-			else if (text=== 'What all amenities do you have?' || text=== 'amenities?' || text=== 'amenities'){
+			else if (amenities){
 				sendTextMessage(sender, "We are offering Gym, Yoga/Meditation Hall, Jogging Track, Party Lawn & much more. Would you like know about Booking Offer? then please type Booking", token)
 			}
-			else if (text=== 'What are the areas of 1BHK and 2BHK Flats?' || text=== 'areas?' || text=== 'areas' || text=== 'area'){
+			else if (area){
 				sendTextMessage(sender, "1 BHK is 560 sq ft and 2 BHK is 950 Sq Ft.", token)
 			}
-			else if (amenities){
-				sendTextMessage(sender, "test We are offering Gym, Yoga/Meditation Hall, Jogging Track, Party Lawn & much more. Would you like know about Booking Offer? then please type Booking", token)
+			else if (contactme){
+				sendTextMessage(sender, "Thank you for contacting us. Please share your contact details at http://www.sunshinehills.in/, our sales representative will get back to you soon.", token)
 			}
-			else if (text=== 'What are the rates?' || text=== 'rates?' || text=== 'rates' || text=== 'price' || text=== 'price?' || text=== 'pricing' || text=== 'pricing?'){
+			else if (price){
 				sendTextMessage(sender, "1 BHK will be 28 Lakh (all inclusive) and 2BHK 46 Lakh (all inclusive). Would you like to check our Amenities, please type amenities.", token)
 			}
-			else if (text=== 'When will we get the possession?' || text=== 'possession?' || text=== 'possession'){
+			else if (possession){
 				sendTextMessage(sender, "Flats are ready possession flats.", token)
 			}
-			else if (text=== 'booking'){
+			else if (booking){
 				sendTextMessage(sender, "You can book by paying 25000+Taxes. Please share your contact details here: http://www.sunshinehills.in", token)
 			}
-			else if (text=== 'When can I see the site?'){
+			else if (sitevisit){
 				sendTextMessage(sender, "Sir, please let us know your convenient timings and we will book your site-visit accordingly.", token)
 			}
-			else if (text=== 'Do you have bank finance facility available?' || text=== 'finance'){
+			else if (finance){
 				sendTextMessage(sender, "Yes, you can get the home-loan assistance from HDFC, AXIS and SBI.", token)
 			}
 			else if (text=== 'Will you provide the services to do the site visit?'){
