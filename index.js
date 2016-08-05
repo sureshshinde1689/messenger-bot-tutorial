@@ -48,6 +48,9 @@ app.post('/webhook/', function (req, res) {
 			else if (text=== 'hi'){
 				sendTextMessage(sender, "Hello, I am a chat bot. If you want to more info type Generic", token)
 			}
+			else if (text=== '1bhk Price'){
+				sendTextMessage(sender, "Hello, I am a chat bot. If you want to more info type Generic", token)
+			}
 			else if (text=== 'Where is the project location?' || text=== 'project location?' || text=== 'project location' || text=== 'location'){
 				sendTextMessage(sender, "NIBM Annexe, Undri-Pisoli Road", token)
 			}
@@ -57,8 +60,8 @@ app.post('/webhook/', function (req, res) {
 			else if (text=== 'What are the areas of 1BHK and 2BHK Flats?' || text=== 'areas?' || text=== 'areas' || text=== 'area'){
 				sendTextMessage(sender, "1 BHK is 560 sq ft and 2 BHK is 950 Sq Ft.", token)
 			}
-			else if (text=== 'What are the rates?' || text=== 'rates?' || text=== 'rates'){
-				sendTextMessage(sender, "1 BHK will be 28 Lakh (all inclusive) and 2BHK 46 Lakh (all inclusive)", token)
+			else if (text=== 'What are the rates?' || text=== 'rates?' || text=== 'rates' || text=== 'price' || text=== 'rate' || text=== 'pricing'){
+				sendTextMessage(sender, "1 BHK will be 28 Lakh (all inclusive) and 2BHK 46 Lakh (all inclusive). Would you like to check our Loan facilities, then type loan", token)
 			}
 			else if (text=== 'When will we get the possession?' || text=== 'possession?' || text=== 'possession'){
 				sendTextMessage(sender, "Flats are ready possession flats.", token)
@@ -66,7 +69,7 @@ app.post('/webhook/', function (req, res) {
 			else if (text=== 'When can I see the site?'){
 				sendTextMessage(sender, "Sir, please let us know your convenient timings and we will book your site-visit accordingly.", token)
 			}
-			else if (text=== 'Do you have bank finance facility available?' || text=== 'finance'){
+			else if (text=== 'Do you have bank finance facility available?' || text=== 'finance' text=== 'loan'){
 				sendTextMessage(sender, "Yes, you can get the home-loan assistance from HDFC, AXIS and SBI.", token)
 			}
 			else if (text=== 'Will you provide the services to do the site visit?'){
