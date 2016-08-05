@@ -37,45 +37,47 @@ app.post('/webhook/', function (req, res) {
 			text = text.toLowerCase();
 			var patt = new RegExp(text);
 			var resg = patt.test("generic");
-			var amenities = patt.test("amenit");
-			var price = patt.test("rate");
+			var amenitiesp = new RegExp(text);
+			var amenities = amenitiesp.test("amenit");
+			var pricep = new RegExp(text);
+			var price = pricep.test("rate");
 			if(!price)
-			var price = patt.test("pric");
-			var sitevisit = patt.test("site visit");
-			var location = patt.test("location");
+			var price = pricep.test("pric");
+			var sitevisitp = new RegExp(text);
+			var sitevisit = sitevisitp.test("site visit");
+			var locationp = new RegExp(text);
+			var location = locationp.test("location");
 			if(!location)
-			var location = patt.test("address");
+			var location = locationp.test("address");
 			if(!location)
-			var location = patt.test("address?");
+			var location = locationp.test("address?");
 			if(!location)
-			var location = patt.test("location?");
-			var contactme = patt.test("call me");
+			var location = locationp.test("location?");
+			var callmep = new RegExp(text);
+			var contactme = callmep.test("call me");
 			if(!contactme)
-			var contactme = patt.test("contact me");
+			var contactme = callmep.test("contact me");
 			if(!contactme)
-			var contactme = patt.test("contact me?");
+			var contactme = callmep.test("contact me?");
 			if(!contactme)
-			var contactme = patt.test("call me?");
-			var area = patt.test("area");
+			var contactme = callmep.test("call me?");
+			var areap = new RegExp(text);
+			var area = areap.test("area");
 			if(!area)
-			var area = patt.test("areas");
+			var area = areap.test("areas");
 			if(!area)
-			var area = patt.test("areas?");
-			var possession = patt.test("possession");
+			var area = areap.test("areas?");
+			var possessionp = new RegExp(text);
+			var possession = possessionp.test("possession");
 			if(!possession)
-			var possession = patt.test("possession?");
-			var finance = patt.test("finance");
+			var possession = possessionp.test("possession?");
+			var financep = new RegExp(text);
+			var finance = financep.test("finance");
 			if(!finance)
-			var finance = patt.test("finance?");
-			if(!finance)
-			var finance = patt.test("loan");
-			if(!finance)
-			var finance = patt.test("loan?");
-			var booking = patt.test("book");
-			if(!booking)
-			var booking = patt.test("booking");
-			if(!booking)
-			var booking = patt.test("booking?");
+			var finance = financep.test("loan");
+			var bookp = new RegExp(text);
+			var booking = bookp.test("book");
+		
 			if (resg) {
 				sendGenericMessage(sender)
 				continue
