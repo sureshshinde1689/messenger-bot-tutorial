@@ -47,6 +47,10 @@ app.post('/webhook/', function (req, res) {
 			}
 			var sitevisitp = new RegExp("site visit");
 			var sitevisit = sitevisitp.test(text);
+			if(!sitevisit){
+			var sitevisitp = new RegExp("sitevisit");
+			var sitevisit = sitevisitp.test(text);
+			}
 			var locationp = new RegExp("location");
 			var location = locationp.test(text);
 			if(!location)
@@ -108,12 +112,12 @@ app.post('/webhook/', function (req, res) {
 				continue
 			}
 			else if (text=== 'hello'){
-				sendTextMessage(sender, "Hello, I am a chat bot. Check out below", token)
+				sendTextMessage(sender, "Hello, welcome to Sunshine Hills. How may I help you", token)
 				sendGenericMessage(sender)
 				continue
 			}
 			else if (text=== 'hi'){
-				sendTextMessage(sender, "Hello, I am a chat bot. Check out below", token)
+				sendTextMessage(sender, "Hello, welcome to Sunshine Hills. How may I help you", token)
 				sendGenericMessage(sender)
 				continue
 			}
