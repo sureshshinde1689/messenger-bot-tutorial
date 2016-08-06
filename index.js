@@ -85,6 +85,16 @@ app.post('/webhook/', function (req, res) {
 			var financep = new RegExp("loan");
 			var finance = financep.test(text);
 			}
+			if(!finance)
+			{
+			var financep = new RegExp("emi");
+			var finance = financep.test(text);
+			}
+			if(!finance)
+			{
+			var financep = new RegExp("downpayment");
+			var finance = financep.test(text);
+			}
 			var bookp = new RegExp("book");
 			var booking = bookp.test(text);
 			var bhkp = new RegExp("bhk");
@@ -111,13 +121,13 @@ app.post('/webhook/', function (req, res) {
 				sendDetailsMessage(sender)
 				continue
 			}
-			else if (text=== 'hello'){
+			else if (text=== 'hello' || text=== 'hi'){
 				sendTextMessage(sender, "Hello, welcome to Sunshine Hills. How may I help you", token)
 				sendGenericMessage(sender)
 				continue
 			}
-			else if (text=== 'hi'){
-				sendTextMessage(sender, "Hello, welcome to Sunshine Hills. How may I help you", token)
+			else if (images){
+				sendTextMessage(sender, "For more info visit: http://sunshinehills.in/#gallery ", token)
 				sendGenericMessage(sender)
 				continue
 			}
