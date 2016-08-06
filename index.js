@@ -42,7 +42,11 @@ app.post('/webhook/', function (req, res) {
 			var pricep = new RegExp("rate");
 			var price = pricep.test(text);
 			if(!price){
-			var pricep = new RegExp("price");
+			var pricep = new RegExp("pric");
+			var price = pricep.test(text);
+			}
+			if(!price){
+			var pricep = new RegExp("cost");
 			var price = pricep.test(text);
 			}
 			var sitevisitp = new RegExp("site visit");
@@ -51,7 +55,15 @@ app.post('/webhook/', function (req, res) {
 			var sitevisitp = new RegExp("sitevisit");
 			var sitevisit = sitevisitp.test(text);
 			}
-			var locationp = new RegExp("location");
+			if(!sitevisit){
+			var sitevisitp = new RegExp("meet");
+			var sitevisit = sitevisitp.test(text);
+			}
+			if(!sitevisit){
+			var sitevisitp = new RegExp("schedule");
+			var sitevisit = sitevisitp.test(text);
+			}
+			var locationp = new RegExp("locat");
 			var location = locationp.test(text);
 			if(!location)
 			{
