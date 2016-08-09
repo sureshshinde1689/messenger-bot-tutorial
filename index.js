@@ -26,6 +26,85 @@ app.get('/webhook/', function (req, res) {
 	res.send('Error, wrong token')
 })
 
+function sendDetailsMessage(sender) {
+	let messageDetailsData = {
+		"attachment": {
+			"type": "template",
+			"payload": {
+				"template_type": "generic",
+				"elements": [{
+					"title": "Project Location",
+					"subtitle": "NIBM Annexe, Undri-Pisoli Road",
+					"image_url": "http://sunshinehills.in/img/locationmap.jpg",
+					"buttons": [{
+						"type": "web_url",
+						"url": "http://sunshinehills.in/",
+						"title": "web url"
+					}, {
+						"type": "postback",
+						"title": "Postback",
+						"payload": "Project location is NIBM Annexe, Undri-Pisoli Road",
+					}],
+				},
+				{
+					"title": "What are the areas of 1BHK and 2BHK Flats?",
+					"subtitle": "1 BHK 3D View",
+					"image_url": "http://sunshinehills.in/img/1bhk-3dview.jpg",
+					"buttons": [{
+						"type": "web_url",
+						"url": "http://sunshinehills.in/",
+						"title": "web url"
+					}, {
+						"type": "postback",
+						"title": "Postback",
+						"payload": "Payload for first element in a generic bubble",
+					}],
+				},
+				{
+					"title": "2 BHK 3D View",
+					"subtitle": "Aminities( next)",
+					"image_url": "http://sunshinehills.in/img/2bhk-3dview.jpg",
+					"buttons": [{
+						"type": "web_url",
+						"url": "http://sunshinehills.in/",
+						"title": "web url"
+					}, {
+						"type": "postback",
+						"title": "Postback",
+						"payload": "Payload for first element in a generic bubble",
+					}],
+				},
+
+				 {
+					"title": "Even Floor Plan",
+					"subtitle": "B wing even floor plan",
+					"image_url": "http://sunshinehills.in/img/wing-b-evenfloorplan.jpg",
+					"buttons": [{
+						"type": "postback",
+						"title": "Postback",
+						"payload": "this is contect to display",
+					}],
+				}]
+			}
+		}
+	}
+	request({
+		url: 'https://graph.facebook.com/v2.6/me/messages',
+		qs: {access_token:token},
+		method: 'POST',
+		json: {
+			recipient: {id:sender},
+			message: messageDetailsData,
+		}
+	}, function(error, response, body) {
+		if (error) {
+			console.log('Error sending messages: ', error)
+		} else if (response.body.error) {
+			console.log('Error: ', response.body.error)
+		}
+	})
+}
+
 // to post data
 app.post('/webhook/', function (req, res) {
 	let messaging_events = req.body.entry[0].messaging
@@ -74,7 +153,7 @@ app.post('/webhook/', function (req, res) {
 			var contactme = callmep.test(text);
 			if(!contactme)
 			{
-			var callmep = new RegExp("contact me");
+			var callmep = new RegExp("contact");
 			var contactme = callmep.test(text);
 			}
 			var areap = new RegExp("area");
@@ -123,7 +202,7 @@ app.post('/webhook/', function (req, res) {
 			var imagesp = new RegExp("picture");
 			var images = imagesp.test(text);
 			}
-			var galleryp = new RegExp("gallery");
+			var galleryp = new RegExp("galler");
 			var gallery = galleryp.test(text);
 			if (resg) {
 				sendGenericMessage(sender)
@@ -153,7 +232,7 @@ app.post('/webhook/', function (req, res) {
 				sendTextMessage(sender, "1 BHK is 560 sq ft and 2 BHK is 950 Sq Ft.", token)
 			}
 			else if (contactme){
-				sendTextMessage(sender, "Thank you for contacting us. Please share your contact details at http://www.sunshinehills.in/, our sales representative will get back to you soon.", token)
+				sendTextMessage(sender, "Thank you for contacting us. Please share your contact details at http://www.sunshinehills.in/#contact, our sales representative will get back to you soon.", token)
 			}
 			else if (price){
 				sendTextMessage(sender, "1 BHK will be 28 Lakh (all inclusive) and 2BHK 46 Lakh (all inclusive). Would you like to check our offers, please type offer.", token)
@@ -171,7 +250,7 @@ app.post('/webhook/', function (req, res) {
 				sendTextMessage(sender, "The price of 1 bhk is 27.25 lacs with discount of 50000 and the price of 2 bhk is 42.65 lacs with discount of 1 lacs", token)
 			}
 			else if (booking){
-				sendTextMessage(sender, "You can book by paying 25000+Taxes. Please share your contact details here: http://www.sunshinehills.in", token)
+				sendTextMessage(sender, "You can book by paying 25000+Taxes. Please share your contact details here: http://www.sunshinehills.in/#contact", token)
 			}
 			else if (sitevisit){
 				sendTextMessage(sender, "Please share your contact details at http://www.sunshinehills.in/, our sales representative will get back to you soon.", token)
@@ -317,84 +396,7 @@ function sendGenericMessage(sender) {
 }
 
 
-function sendDetailsMessage(sender) {
-	let messageDetailsData = {
-		"attachment": {
-			"type": "template",
-			"payload": {
-				"template_type": "details",
-				"elements": [{
-					"title": "Project Location",
-					"subtitle": "NIBM Annexe, Undri-Pisoli Road",
-					"image_url": "http://sunshinehills.in/img/locationmap.jpg",
-					"buttons": [{
-						"type": "web_url",
-						"url": "http://sunshinehills.in/",
-						"title": "web url"
-					}, {
-						"type": "postback",
-						"title": "Postback",
-						"payload": "Project location is NIBM Annexe, Undri-Pisoli Road",
-					}],
-				},
-				{
-					"title": "What are the areas of 1BHK and 2BHK Flats?",
-					"subtitle": "1 BHK 3D View",
-					"image_url": "http://sunshinehills.in/img/1bhk-3dview.jpg",
-					"buttons": [{
-						"type": "web_url",
-						"url": "http://sunshinehills.in/",
-						"title": "web url"
-					}, {
-						"type": "postback",
-						"title": "Postback",
-						"payload": "Payload for first element in a generic bubble",
-					}],
-				},
-				{
-					"title": "2 BHK 3D View",
-					"subtitle": "Aminities( next)",
-					"image_url": "http://sunshinehills.in/img/2bhk-3dview.jpg",
-					"buttons": [{
-						"type": "web_url",
-						"url": "http://sunshinehills.in/",
-						"title": "web url"
-					}, {
-						"type": "postback",
-						"title": "Postback",
-						"payload": "Payload for first element in a generic bubble",
-					}],
-				},
 
-				 {
-					"title": "Even Floor Plan",
-					"subtitle": "B wing even floor plan",
-					"image_url": "http://sunshinehills.in/img/wing-b-evenfloorplan.jpg",
-					"buttons": [{
-						"type": "postback",
-						"title": "Postback",
-						"payload": "this is contect to display",
-					}],
-				}]
-			}
-		}
-	}
-	request({
-		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token:token},
-		method: 'POST',
-		json: {
-			recipient: {id:sender},
-			message: messageDetailsData,
-		}
-	}, function(error, response, body) {
-		if (error) {
-			console.log('Error sending messages: ', error)
-		} else if (response.body.error) {
-			console.log('Error: ', response.body.error)
-		}
-	})
-}
 
 // spin spin sugar
 app.listen(app.get('port'), function() {
