@@ -111,7 +111,7 @@ app.post('/webhook/', function (req, res) {
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = req.body.entry[0].messaging[i]
 		let sender = event.sender.id
-		if (event.message && event.message.text) {
+	/*	if (event.message && event.message.text) {
 			let text = event.message.text
 			text = text.toLowerCase();
 			var patt = new RegExp("generic");
@@ -267,6 +267,7 @@ app.post('/webhook/', function (req, res) {
 			}
 			//sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
 		}
+		*/
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
 			sendTextMessage(sender, "For more details, please visit: http://sunshinehills.in/", token)
@@ -280,7 +281,7 @@ app.post('/webhook/', function (req, res) {
 
 // recommended to inject access tokens as environmental variables, e.g.
 // const token = process.env.PAGE_ACCESS_TOKEN
-const token = "EAAEOWbpOgq0BAKuxZBjBJrG8cIhNptdZCzgnOJzBe89SFKBZAXHIlYAZBox8GlkP8z3Xp585gU7C2KGP2EoHWg1HmW8eo6sjH6X2y7HhkOGfXQJML7ZCge8WG0vJuUAkPyvijZBLp5AgGI5gdr84xZAfa3iw8Pi3K3g3VDLpvSBsgZDZD"
+//const token = ""
 
 function sendTextMessage(sender, text) {
 	let messageData = { text:text }
